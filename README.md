@@ -10,6 +10,15 @@ or
 npm install
 ```
 
+## .env
+
+- Copy the .env.example and rename with .env
+- Generate new key
+  ` adonis key:generate`
+- Configure database:
+  - Create database reload_health
+  - Set DB_USER, DB_PASSWORD
+
 ### Migrations and seeds
 
 Run the following command to run startup migrations and run seeds.
