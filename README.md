@@ -1,28 +1,46 @@
 # Adonis API application
 
-This is the boilerplate for creating an API server in AdonisJs, it comes pre-configured with.
-
-1. Bodyparser
-2. Authentication
-3. CORS
-4. Lucid ORM
-5. Migrations and seeds
-
 ## Setup
 
-Use the adonis command to install the blueprint
+Install dependences
 
 ```bash
-adonis new yardstick --api-only
+yarn install
+or
+npm install
 ```
 
-or manually clone the repo and then run `npm install`.
+### Migrations and seeds
 
-
-### Migrations
-
-Run the following command to run startup migrations.
+Run the following command to run startup migrations and run seeds.
 
 ```js
-adonis migration:run
+adonis migration:run --seed
 ```
+
+### Run project
+
+```js
+adonis run serve
+```
+
+### Run tests
+
+```js
+adonis test
+```
+
+## Using API
+
+| Routes              | Methods | Params                                                                | Format    |
+| ------------------- | ------- | --------------------------------------------------------------------- | --------- |
+| products            | GET     | --                                                                    | --        |
+| products            | POST    | ref, name, resume, description, quantity, price_ht, price_ttc, active | JSON      |
+| products/:id        | UPDATE  | ref, name, resume, description, quantity, price_ht, price_ttc, active | JSON      | -- | -- |
+| products/:id        | DELETE  | --                                                                    | --        |
+| categories          | GET     | --                                                                    | --        |
+| categories          | POST    | name                                                                  | JSON      |
+| categories/:id      | UPDATE  | name                                                                  | JSON      |
+| categories/:id      | DELETE  | --                                                                    | --        |
+| images/:path        | GET     | --                                                                    | --        |
+| products/:id/images | POST    | image[]                                                               | Multipart |
