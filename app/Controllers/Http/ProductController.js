@@ -3,10 +3,13 @@ const Products = use('App/Models/Product');
 
 class ProductController {
   async index({ response, request }) {
-    const products = await Products.query()
-      .with('images')
-      .with('categories')
-      .fetch();
+    const q = request.input('q');
+    const query = Products.query().with('images').with('categories');
+    if (q) {
+      query.whereRaw('LOWER(name) LIKE ?', '%' + q.toLowerCase() + '%');
+    }
+
+    const products = await query.fetch();
 
     return products;
   }
